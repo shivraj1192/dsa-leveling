@@ -1,48 +1,58 @@
-# Valid Palindrome
+# 🕵️ Case: Valid Palindrome
 
 **Platform:** LeetCode  
 **Problem ID:** 125  
 **Difficulty:** Easy  
-**Problem Link:** https://leetcode.com/problems/valid-palindrome/  
-**Topics:** Strings, Two Pointers
+**Topics:** Strings, Two Pointers  
+**Problem Link:** https://leetcode.com/problems/valid-palindrome/
 
-## Problem Summary
+---
 
-We are given a string. We need to check whether it is a valid palindrome.
+## 🧩 What puzzled me
 
-For this problem:
+We are given a string and need to determine whether it is a palindrome.
 
+But there is a catch:
+
+- Ignore spaces.
+- Ignore special characters.
 - Consider only alphanumeric characters.
-- Ignore spaces and special characters.
-- Ignore the difference between uppercase and lowercase letters.
+- Ignore uppercase/lowercase differences.
+
+The main thing that made me pause was:
+
+> **How can I compare the characters while ignoring unwanted characters without creating unnecessary extra data?**
 
 ### Example
 
 ```text
-Input: "A man, a plan, a canal: Panama"
-Output: true
+"A man, a plan, a canal: Panama"
+→ true
+```
+
+```text
+"race a car"
+→ false
 ```
 
 ---
 
-## Approach 1 — Brute Force
+## 🔎 First instinct — Brute Force
 
-### Idea
+My first thought was:
 
-First create a cleaned version of the string containing only alphanumeric characters in lowercase.
+> **Clean the string first, then check whether the cleaned string is a palindrome.**
 
-Then reverse the cleaned string and compare it with the original cleaned string.
+### Investigation
 
-### Steps
-
-1. Traverse the input string.
+1. Traverse the string.
 2. Keep only alphanumeric characters.
-3. Convert characters to lowercase.
+3. Convert them to lowercase.
 4. Store the cleaned string.
 5. Reverse the cleaned string.
-6. Compare the original and reversed strings.
+6. Compare the original cleaned string with the reversed string.
 
-### Java
+### Code
 
 ```java
 public boolean isPalindrome(String s) {
@@ -65,47 +75,69 @@ public boolean isPalindrome(String s) {
 
 **Time:** `O(n)`
 
-We scan the string and then reverse the cleaned string.
+We traverse the string and reverse the cleaned string.
 
 **Space:** `O(n)`
 
-We create a cleaned string and its reversed representation.
+We create an additional cleaned string.
 
-### Limitation
+### What bothered me
 
-The solution works, but it uses extra space to store the cleaned string.
+The solution works, but I am creating another representation of the input just to check something that can potentially be checked directly.
+
+That is the bottleneck.
 
 ---
 
-## Approach 2 — Optimal
+## 🔍 Mini Investigation — Find the Bottleneck
 
-### Idea
+The actual palindrome property is about comparing:
 
-Instead of creating another cleaned string, use two pointers:
+```text
+first  ↔ last
+second ↔ second-last
+third  ↔ third-last
+```
 
-- `left` starts from the beginning.
-- `right` starts from the end.
+So why should I create another string?
 
-Move the pointers toward each other.
+I can directly look at both ends of the original string.
 
-If a character is not alphanumeric, skip it.
+But there is another problem:
 
-When both characters are valid, compare them after converting them to lowercase.
+```text
+"ab, cba"
+   ↑
+special characters
+```
 
-If they are different, the string is not a palindrome.
+I cannot compare every character directly.
 
-### Steps
+So I need to **skip characters that are not alphanumeric**.
 
-1. Set `left = 0`.
-2. Set `right = n - 1`.
-3. Move `left` forward while its character is not alphanumeric.
-4. Move `right` backward while its character is not alphanumeric.
-5. Compare the two valid characters.
-6. If they are different, return `false`.
-7. Move both pointers toward the center.
-8. If all characters match, return `true`.
+This leads to the two-pointer approach.
 
-### Java
+---
+
+## 🧠 Actual Solution — Two Pointers
+
+Use two pointers:
+
+```text
+left  → beginning
+right → end
+```
+
+Then:
+
+1. Move `left` forward until it reaches an alphanumeric character.
+2. Move `right` backward until it reaches an alphanumeric character.
+3. Compare both characters after converting them to lowercase.
+4. If they are different → not a palindrome.
+5. If they match → move both pointers.
+6. Continue until the pointers meet.
+
+### Code
 
 ```java
 public boolean isPalindrome(String s) {
@@ -135,42 +167,143 @@ public boolean isPalindrome(String s) {
 }
 ```
 
-### Complexity
+---
 
-**Time:** `O(n)`
+## 🧪 Mini Investigation — Dry Run
 
-Each character is processed at most a constant number of times.
-
-**Space:** `O(1)`
-
-We only use two pointers and do not create another string.
-
-### Why This Is Better
-
-Both approaches take `O(n)` time.
-
-The important improvement is space:
+Input:
 
 ```text
-Brute Force → O(n) extra space
-Optimal     → O(1) extra space
+"A man, a plan, a canal: Panama"
 ```
 
-The optimal solution checks the palindrome directly in the original string instead of creating a cleaned copy.
+Ignoring non-alphanumeric characters:
+
+```text
+A m a n a p l a n a c a n a l P a n a m a
+↑                                   ↑
+L                                   R
+```
+
+Compare:
+
+```text
+A ↔ a  → match
+m ↔ m  → match
+a ↔ a  → match
+n ↔ n  → match
+...
+```
+
+The pointers keep moving toward the center.
+
+No mismatch is found.
+
+Therefore:
+
+```text
+true
+```
 
 ---
 
-## Complexity Comparison
+## ⚖️ Final Report
 
 | Approach | Time | Space |
-|----------|------|-------|
+|---|---:|---:|
 | Brute Force | O(n) | O(n) |
-| Optimal | O(n) | O(1) |
+| Two Pointers | O(n) | O(1) |
+
+The time complexity did **not** improve.
+
+The important improvement was:
+
+```text
+O(n) extra space
+      ↓
+O(1) extra space
+```
+
+I removed the need to create a cleaned string and its reversed representation.
 
 ---
 
-## Key Learning
+## 💡 What I Learned
 
-When checking something from both ends of a string or array, consider using **two pointers** instead of creating another data structure.
+The important lesson is not just:
 
-The main optimization here is removing the need to create a cleaned string.
+> "Use two pointers for palindrome."
+
+The deeper lesson is:
+
+> **Before creating another data structure, check whether the problem can be solved directly on the original input.**
+
+When I need to compare elements from opposite ends, two pointers should come to mind.
+
+---
+
+## 🕵️ Recognition Clue
+
+When I see:
+
+- palindrome
+- compare beginning and end
+- symmetric structure
+- process from both directions
+
+I should immediately investigate:
+
+```text
+Two Pointers
+```
+
+If there are unwanted characters, don't immediately create a cleaned string.
+
+Ask:
+
+> **Can I skip them while moving the pointers?**
+
+---
+
+## ⚠️ Mistakes to Remember
+
+- Don't forget to ignore non-alphanumeric characters.
+- Comparison should be case-insensitive.
+- The `right` pointer moves **backward**, not forward.
+- Don't create an additional string if it isn't necessary.
+- Make sure both pointers are still within the valid range before accessing characters.
+
+---
+
+## 🔁 Revisit
+
+**No**
+
+Reason:
+
+The final approach is straightforward once the two-pointer pattern is understood.
+
+---
+
+## 🧠 Case Summary
+
+```text
+Problem
+   ↓
+Need to check palindrome
+   ↓
+First instinct
+Clean → Reverse → Compare
+   ↓
+Works, but uses O(n) extra space
+   ↓
+Find the bottleneck
+Unnecessary string creation
+   ↓
+Investigation
+Compare directly from both ends
+   ↓
+Two Pointers
+   ↓
+O(n) Time + O(1) Space
+```
