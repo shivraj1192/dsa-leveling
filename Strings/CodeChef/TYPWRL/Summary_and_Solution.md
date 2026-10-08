@@ -14,10 +14,12 @@ Given a srting(s) which is Alice is typing and give one another string(l) which 
 
 Calculate the number of letters are getting types by same hand consecutively of string(s).
 
-Ex: 
+Ex:
+```
 s = "abcde"
 l = "dac"
 ==> 2     ---- Explanation{(a=l, b=r, c=l, d=l, e=r), so the answer is two}
+```
 
 **CONSTRAINTS:**
 - all chars are lower case
