@@ -1,35 +1,28 @@
-# 🕵️ Case: <Problem Name>
+# 🕵️ Case: \<Problem Name>
 
-**Platform:** <LeetCode / CodeChef / GFG / etc.>  
-**Problem ID / Code:** <ID if available>  
-**Difficulty:** <Easy / Medium / Hard>  
-**Topics:** <Topic 1>, <Topic 2>  
-**Problem Link:** <Link>  
+**Platform:** \<LeetCode / CodeChef / GFG / etc.>  
+**Problem ID / Code:** \<ID if available>  
+**Difficulty:** \<Easy / Medium / Hard>  
+**Topics:** \<Topic 1>, \<Topic 2>  
+**Problem Link:** \<Link>
 
 ---
 
 ## Summary
 
----
-
-## 🧩 What Puzzled Me
-
-What is the main thing that makes this problem confusing or non-obvious?
-
-<Explain in 2–4 simple sentences.>
+\<Explain the problem in simple words. Include an example if needed.>
 
 ---
 
 ## 🔎 First Instinct — Brute Force
 
-What was the first straightforward solution I thought of?
+**Initial Idea:** \<What was my first approach?>
 
 ### Investigation
 
-1. <Step>
-2. <Step>
-3. <Step>
-4. <Step>
+1. \<Step 1>
+2. \<Step 2>
+3. \<Step 3>
 
 ### Code
 
@@ -39,50 +32,55 @@ What was the first straightforward solution I thought of?
 
 ### Complexity
 
-**Time:** `O(...)`  
-<Why?>
+**Time:** `O(...)` — \<Why?>
 
-**Space:** `O(...)`  
-<Why?>
+**Space:** `O(...)` — \<Why?>
 
-### What Bothered Me
+---
 
-What is the main weakness of this approach?
+## 🧠 Better Solution
 
-<Explain the bottleneck or unnecessary work.>
+**Improved Idea:** \<What improvement can I make over brute force?>
+
+### Steps
+
+1. \<Step 1>
+2. \<Step 2>
+3. \<Step 3>
+
+### Code
+
+```java
+// Better solution
+```
+
+### Complexity
+
+**Time:** `O(...)` — \<Why?>
+
+**Space:** `O(...)` — \<Why?>
 
 ---
 
 ## 🔍 Mini Investigation — Find the Bottleneck
 
-What exactly makes the first approach inefficient?
+**Observation:** \<What did I notice about the problem?>
 
-### Observation
+**Bottleneck:** \<What repeated or unnecessary work is happening?>
 
-<What did I notice?>
-
-### Bottleneck
-
-<What repeated/unnecessary work is happening?>
-
-### Direction
-
-<What could remove or reduce that work?>
+**Improvement:** \<What can remove or reduce that work?>
 
 ---
 
-## 🧠 Actual Solution — <Pattern / Technique>
+## 🧠 Final Solution — \<Pattern / Technique>
 
-What is the key idea that solves the bottleneck?
-
-<Explain the idea in simple words.>
+**Key Idea:** \<Explain the main insight in simple words.>
 
 ### Steps
 
-1. <Step>
-2. <Step>
-3. <Step>
-4. <Step>
+1. \<Step 1>
+2. \<Step 2>
+3. \<Step 3>
 
 ### Code
 
@@ -92,109 +90,52 @@ What is the key idea that solves the bottleneck?
 
 ### Complexity
 
-**Time:** `O(...)`  
-<Why?>
+**Time:** `O(...)` — \<Why?>
 
-**Space:** `O(...)`  
-<Why?>
-
----
-
-## 🧪 Mini Investigation — Dry Run
-
-### Input
-
-```text
-<Example input>
-```
-
-### Step-by-Step
-
-```text
-Step 1 → ...
-Step 2 → ...
-Step 3 → ...
-Step 4 → ...
-```
-
-### Result
-
-```text
-<Output>
-```
+**Space:** `O(...)` — \<Why?>
 
 ---
 
 ## ⚖️ Final Report
 
 | Approach | Time | Space |
-|----------|------|-------|
+|---|---|---|
 | Brute Force | O(...) | O(...) |
 | Better | O(...) | O(...) |
 | Optimal | O(...) | O(...) |
 
-**Only include approaches that actually exist.**
+*Include only the approaches you actually analyzed or implemented. If a Better or Optimal approach does not exist separately, remove that row.*
 
 ### Why the Final Approach Wins
 
-<Explain the exact improvement.>
-
----
-
-## 💡 What I Learned
-
-<What reusable concept did this problem teach me?>
+\<Explain the exact improvement over the previous approach.>
 
 ---
 
 ## 🕵️ Recognition Clue
 
-When I see a future problem with:
+When I encounter a problem with:
 
-- <Clue 1>
-- <Clue 2>
-- <Clue 3>
+- \<Clue 1>
+- \<Clue 2>
+- \<Clue 3>
 
-I should think about:
+I should consider:
 
-**<Pattern / Technique>**
+**Pattern / Technique:** \<Name>
 
 ---
 
 ## ⚠️ Mistakes to Remember
 
-- <Mistake 1>
-- <Mistake 2>
-- <Mistake 3>
+- \<Mistake 1>
+- \<Mistake 2>
 
 ---
 
 ## 🔁 Revisit
 
-**Yes / No**
+**Revisit:** \<Yes / No>
 
-**Reason:** <Why should I / shouldn't I revisit this?>
+**Reason:** \<What do I still need to understand or remember?>
 
----
-
-## 🧠 Case Summary
-
-```text
-Problem
-   ↓
-What puzzled me
-   ↓
-First instinct
-   ↓
-Bottleneck
-   ↓
-Observation
-   ↓
-Better / Optimal idea
-   ↓
-Dry run
-   ↓
-Final complexity
-   ↓
-Reusable recognition clue
-```
